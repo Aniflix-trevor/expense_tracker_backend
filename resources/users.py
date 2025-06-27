@@ -42,3 +42,19 @@ class LoginResource(Resource):
 
         token = create_access_token(identity=user.id)
         return {"token": token}
+    
+class UsersResource(Resource):
+    def get(self):
+        users = User.query.all()
+        result = [
+            {
+                "id": user.id,
+                "full_name": user.full_name,
+                "email": user.email,
+                "created_at": user.created_at.isoformat() if user.created_at else None,
+                "updated_at": user.updated_at.isoformat() if user.updated_at else None
+            }
+            for user in users
+        ]
+        return result, 200
+

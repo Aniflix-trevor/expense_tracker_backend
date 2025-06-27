@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 from config import DevelopmentConfig 
 
 from models import db
-from resources.users import SigninResource, LoginResource
+from resources.users import SigninResource, LoginResource, UsersResource
 
 # load environment variables
 load_dotenv()
@@ -47,6 +47,7 @@ class Index(Resource):
 api.add_resource(Index, "/")
 api.add_resource(SigninResource, "/signin")
 api.add_resource(LoginResource, "/login")
+api.add_resource(UsersResource, "/users")
 
 if __name__ == "__main__":
     app.run(port=5555)
