@@ -40,23 +40,26 @@ class Entry(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     note = db.Column(db.Text, nullable=False)
+
+    # ✅ New fields
+    amount = db.Column(db.Numeric(10, 2), nullable=False)
+    type = db.Column(db.String(10), nullable=False, default="expense")  # "income" or "expense"
+    is_recurring = db.Column(db.Boolean, nullable=False, default=False)
+
     user_id = db.Column(
         db.Integer,
-        db.ForeignKey(
-            "users.id", ondelete="cascade"
-        ),  # this will delete all user entries if the user is deleted
+        db.ForeignKey("users.id", ondelete="cascade"),
         nullable=False,
     )
     category_id = db.Column(
         db.Integer,
-        db.ForeignKey(
-            "categories.id", ondelete="set null"
-        ),  # this will not delete the entries but rather just sets the column to NULL
+        db.ForeignKey("categories.id", ondelete="set null"),
         nullable=True,
     )
-    created_at = db.Column(db.TIMESTAMP, default=datetime.now())
-    updated_at = db.Column(db.TIMESTAMP, onupdate=datetime.now())  # UPDATE
-    deleted_at = db.Column(db.TIMESTAMP)  # soft deleting
+
+    created_at = db.Column(db.TIMESTAMP, default=datetime.now)
+    updated_at = db.Column(db.TIMESTAMP, onupdate=datetime.now)
+    deleted_at = db.Column(db.TIMESTAMP)
 
     user = db.relationship("User", back_populates="entries", uselist=False)
 
