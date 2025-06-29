@@ -20,7 +20,10 @@ load_dotenv()
 app = Flask(__name__)
 
 # setup cors
-CORS(app, origins=["https://frontendexpensetracker-production.up.railway.app"])
+CORS(app, 
+    origins=["https://frontendexpensetracker-production.up.railway.app"],
+    supports_credentials=True
+)
 
 # setup flask-restful
 api = Api(app)
