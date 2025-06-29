@@ -35,8 +35,9 @@ class EntriesResource(Resource):
         user_id = data.get("user_id")
         category_id = data.get("category_id")
 
-        if not note or amount is None or not user_id:
+        if not note or amount is None or not user_id or category_id is None:
             return {"error": "Missing required fields"}, 400
+
 
         entry = Entry(
             note=note,
