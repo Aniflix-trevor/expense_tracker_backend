@@ -41,10 +41,9 @@ class Entry(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key=True)
     note = db.Column(db.Text, nullable=False)
 
-    # ✅ New fields
     amount = db.Column(db.Numeric(10, 2), nullable=False)
-    type = db.Column(db.String(10), nullable=False, default="expense")  # "income" or "expense"
-    is_recurring = db.Column(db.Boolean, nullable=False, default=False)
+    # type = db.Column(db.String(10), nullable=False, default="expense")  # "income" or "expense"
+    # is_recurring = db.Column(db.Boolean, nullable=False, default=False)
 
     user_id = db.Column(
         db.Integer,

@@ -16,8 +16,8 @@ class EntriesResource(Resource):
                 "id": entry.id,
                 "note": entry.note,
                 "amount": float(entry.amount),
-                "type": entry.type,
-                "is_recurring": entry.is_recurring,
+                # "type": entry.type,
+                # "is_recurring": entry.is_recurring,
                 "user_id": entry.user_id,
                 "category_id": entry.category_id,
                 "created_at": entry.created_at.isoformat() if entry.created_at else None,
@@ -30,8 +30,8 @@ class EntriesResource(Resource):
         data = request.get_json()
         note = data.get("note")
         amount = data.get("amount")
-        type_ = data.get("type", "expense")
-        is_recurring = data.get("is_recurring", False)
+        # type_ = data.get("type", "expense")
+        # is_recurring = data.get("is_recurring", False)
         user_id = data.get("user_id")
         category_id = data.get("category_id")
 
@@ -41,8 +41,8 @@ class EntriesResource(Resource):
         entry = Entry(
             note=note,
             amount=amount,
-            type=type_,
-            is_recurring=is_recurring,
+            # type=type_,
+            # is_recurring=is_recurring,
             user_id=user_id,
             category_id=category_id,
             created_at=datetime.now()
@@ -53,8 +53,8 @@ class EntriesResource(Resource):
             "id": entry.id,
             "note": entry.note,
             "amount": float(entry.amount),
-            "type": entry.type,
-            "is_recurring": entry.is_recurring,
+            # "type": entry.type,
+            # "is_recurring": entry.is_recurring,
             "user_id": entry.user_id,
             "category_id": entry.category_id,
             "created_at": entry.created_at.isoformat() if entry.created_at else None,
