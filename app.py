@@ -1,6 +1,5 @@
 import os
 from datetime import timedelta
-
 from flask import Flask
 from flask_restful import Api, Resource
 from flask_migrate import Migrate
@@ -21,7 +20,7 @@ load_dotenv()
 app = Flask(__name__)
 
 # setup cors
-CORS(app)
+CORS(app, origins=["https://frontendexpensetracker-production.up.railway.app"])
 
 # setup flask-restful
 api = Api(app)
