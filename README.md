@@ -12,14 +12,14 @@ This is the backend for the SE Prep Phase 4 project. It provides RESTful APIs an
 ## Getting Started
 
 1. Clone the repository.
-2. Install dependencies:  
-    ```bash
-    pip install -r requirements.txt
-    ```
-3. Run the server:  
-    ```bash
-    python app.py
-    ```
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Run the server:
+   ```bash
+   python app.py
+   ```
 
 ## Technologies
 
@@ -31,3 +31,5 @@ This is the backend for the SE Prep Phase 4 project. It provides RESTful APIs an
 ## License
 
 This project is licensed under the MIT License.
+
+[Project presentation](https://drive.google.com/file/d/1C66qUhCHRpm4LO46At9FU72D7sycrAJw/view?usp=drive_link)
