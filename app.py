@@ -45,7 +45,7 @@ db.init_app(app)
 
 class Index(Resource):
     def get(self):
-        return {"message": "Welcome to the notted api"}
+        return {"message": "Welcome to the expense api"}
 
 
 api.add_resource(Index, "/")
