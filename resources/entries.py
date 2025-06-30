@@ -62,3 +62,39 @@ class EntriesResource(Resource):
             "updated_at": entry.updated_at.isoformat() if entry.updated_at else None,
             "deleted_at": entry.deleted_at.isoformat() if entry.deleted_at else None,
         }, 201
+
+    def put(self, entry_id):
+        data = request.get_json()
+        entry = Entry.query.get(entry_id)
+        if not entry:
+            return {"error": "Entry not found"}, 404
+
+        note = data.get("note", entry.note)
+        amount = data.get("amount", entry.amount)
+        # type_ = data.get("type", entry.type)
+        # is_recurring = data.get("is_recurring", entry.is_recurring)
+        user_id = data.get("user_id", entry.user_id)
+        category_id = data.get("category_id", entry.category_id)
+
+        entry.note = note
+        entry.amount = amount
+        # entry.type = type_
+        # entry.is_recurring = is_recurring
+        entry.user_id = user_id
+        entry.category_id = category_id
+        entry.updated_at = datetime.now()
+
+        db.session.commit()
+
+        return {
+            "id": entry.id,
+            "note": entry.note,
+            "amount": float(entry.amount),
+            # "type": entry.type,
+            # "is_recurring": entry.is_recurring,
+            "user_id": entry.user_id,
+            "category_id": entry.category_id,
+            "created_at": entry.created_at.isoformat() if entry.created_at else None,
+            "updated_at": entry.updated_at.isoformat() if entry.updated_at else None,
+            "deleted_at": entry.deleted_at.isoformat() if entry.deleted_at else None,
+        }, 200
